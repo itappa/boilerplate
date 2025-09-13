@@ -23,6 +23,11 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts",
+    "commons",
+    "bookmarks",
+    "recipes",
+    "screenshots",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -131,9 +136,13 @@ MEDIA_ROOT = "/var/media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = "accounts.CustomUser"
+
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+DATA_UPLOAD_MAX_NUMBER_FILES = 1000

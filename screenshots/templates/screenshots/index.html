@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="masonry">
+    {% for image in images %}
+      <a href="/media/{{ image.image }}" class="masonry-item">
+        <img src="/media/{{ image.thumbnail }}" alt="">
+      </a>
+    {% endfor %}
+  </div>
+{% endblock content %}
+{% block script %}
+  <script src="{% static 'vendor/macy/macy.js' %}"></script>
+  <script>
+    const macyInstance = Macy({
+      container: '.masonry',
+      trueOrder: false,
+      waitForImages: true,
+      margin: 15,
+      columns: 4,
+      breakAt: {
+        1200: 3,
+        940: 2,
+        520: 1
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      macyInstance.recalculate(true);
+    });
+  </script>
+{% endblock script %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+  Bookmark - {{ block.super }}
+{% endblock title %}
+{% block sidebar %}
+  {% include "bookmarks/sidebar.html" %}
+{% endblock sidebar %}
+{% block container %}
+  <div class="grow sm:p-4 lg:ml-64">
+    {% include "bookmarks/switch_layout.html" %}
+    {% block content %}
+    {% endblock content %}
+  </div>
+{% endblock container %}
+{% block pagination %}
+  {% include "includes/pagination.html" %}
+{% endblock pagination %}

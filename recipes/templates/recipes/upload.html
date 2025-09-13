@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+       <form method="post"
+             enctype="multipart/form-data"
+             class="max-w-sm mx-auto flex flex-col gap-4">
+              {% csrf_token %}
+              <label for="file-input" class="sr-only">Choose file</label>
+              {% render_field form.image name="file-input" id="file-input" accept="image/*" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 isabled:pointer-events-none dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" multiple="multiple" %}
+              <label for="{{ form.category.id_for_label }}"
+                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     {{ form.category.label }}
+              </label>
+              {% render_field form.category class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %}
+              <label for="{{ form.tags.id_for_label }}"
+                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ form.tags.label }}</label>
+              {% render_field form.tags class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %}
+              <button type="submit"
+                      class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                     Uplaod
+              </button>
+       </form>
+{% endblock content %}
